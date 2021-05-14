@@ -1,12 +1,16 @@
 const container = document.querySelector('#container');
 container.addEventListener('click', toggleDrawMode);
+
 const sizeText = document.querySelector('#size-text');
+
 const clearButton = document.querySelector('#clear-button');
+clearButton.addEventListener('click', clearDrawing);
+
 const sizeSlider =  document.querySelector('#size-slider');
 sizeSlider.addEventListener('input',updateGridSize); //Activiate as range slides
 sizeSlider.addEventListener('change',updateGridSizeDisplay); //Activate as range changed (mouse released)
 
-const DEFAULT_COLOR = "white";
+const DEFAULT_COLOR = 'white';
 let drawStarted = false;
 
 function makeSquareDivs(size) {
@@ -49,7 +53,10 @@ function draw(e) {
 }
 
 function clearDrawing(e) {
-
+    let blockList = container.childNodes;
+    blockList.forEach(block => {
+        block.style.backgroundColor = DEFAULT_COLOR;
+    });
 }
 
 function clearGrid() {
