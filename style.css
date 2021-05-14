@@ -11,6 +11,17 @@
     margin: auto;
 }
 
+#clear-button {
+
+}
+
+#size-slider {
+
+}
+
+#size-text {
+    
+}
 .block:hover {
     background-color: yellow;
 }

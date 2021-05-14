@@ -4,11 +4,15 @@
         <meta charset="utf-8">
         <title>Etch-A-Sketch</title>
         <link rel="stylesheet" href="style.css" media="all" type="text/css">
-        
     </head>
+
     <body>
         <div id="container"></div>
+        <div id="bottom-controls">
+            <button id="clear-button">Clear Drawing</button>
+            <input type="range" value="30" min="0" max="100" step="5" id="size-slider">
+            <input type="text" id="size-text" value="30">
+        </div>
         <script src ="script.js"></script>  
     </body>
-
 </html>
