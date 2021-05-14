@@ -38,11 +38,13 @@ function toggleDrawMode(e) {
     if (!drawStarted){
         blockList.forEach(block => {
             block.addEventListener('mouseenter', draw);
+            block.addEventListener('mouseleave', draw);
         });
         drawStarted = true;
     } else {
         blockList.forEach(block => {
             block.removeEventListener('mouseenter', draw);
+            block.removeEventListener('mouseleave', draw);
         });
         drawStarted = false;
     }
