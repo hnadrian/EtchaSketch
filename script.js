@@ -16,7 +16,8 @@ let drawStarted = false;
 function makeSquareDivs(size) {
     for (let i = 0; i < (size * size); i++) {
         const gridBlock = document.createElement('div');
-        gridBlock.style.border = '0.5px solid red';
+        gridBlock.style.border = '1px solid rgba(255, 0, 0, .3)';
+        //gridBlock.addEventListener('mouseover', highlight);
         container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
         container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
         container.appendChild(gridBlock).classList.add('block');
@@ -54,10 +55,15 @@ function draw(e) {
     e.target.style.backgroundColor = 'blue';
 }
 
+function highlight(e) {
+    e.target.style.backgroundColor = 'yellow';
+}
+
 function clearDrawing(e) {
     let blockList = container.childNodes;
     blockList.forEach(block => {
         block.style.backgroundColor = DEFAULT_COLOR;
+        //block.addEventListener('mouseover', highlight);
     });
 }
 
