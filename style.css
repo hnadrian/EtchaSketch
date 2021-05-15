@@ -1,3 +1,6 @@
+body {
+    background: #A8D0E6;
+}
 #container {
     display: inline-grid;
     width: 70vh;
@@ -11,18 +14,72 @@
     margin: auto;
 }
 
-#clear-button {
-
+label {
+    color: rgb(255, 255, 255);
+    text-shadow: 1.3px 1px 2px #6a8797;
 }
 
-#size-slider {
+.button {
+    background-color: #F76C6C;
+    border: none;
+    color: rgb(255, 255, 255);
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+}
 
+input[type=range] {
+    -webkit-appearance: none;
+    height: 2px;
+    background: #181818;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    height: 18px;
+    width: 12px;
+    border-radius: 6px;
+    background: #F76C6C;
+    -webkit-appearance: none;
+}
+
+input[type="radio"] {
+    display: inline-block;
+    background-color: #ddd;
+    padding: 10px 20px;
+    font-family: sans-serif, Arial;
+    font-size: 16px;
+    border: 2px solid #444;
+    border-radius: 4px;
+}
+
+input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    padding: 3px;
+    background-clip: content-box;
+    border: 1px solid #bbbbbb;
+    background-color: #e7e6e7;
+    border-radius: 50%;
+}
+  
+input[type="radio"]:checked {
+    background-color: #F76C6C; 
 }
  
 #size-text {
     width: 28px;
     text-align: center;
 }
+
+#size-text:focus {
+    border-color: #000000;
+    outline: 0;
+}
+
 .block:hover {
     background-color: rgba(255, 238, 0, 0.445) !important;
 }

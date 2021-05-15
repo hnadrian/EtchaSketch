@@ -31,11 +31,11 @@ const DEFAULT_PEN_COLOR = '#000000';
 colorPicker.value = DEFAULT_PEN_COLOR;
 let penColor = DEFAULT_PEN_COLOR;
 
-
 function makeSquareDivs(size) {
     for (let i = 0; i < (size * size); i++) {
         const gridBlock = document.createElement('div');
-        gridBlock.style.border = '1px solid rgba(255, 0, 0, .3)';
+        gridBlock.style.backgroundColor = 'white';
+        gridBlock.style.border = '1px solid rgba(0, 0, 0, .2)';
         gridBlock.addEventListener('click', draw);
         container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
         container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
@@ -122,6 +122,16 @@ function clearGrid() {
     }
 }
 
-
-
 makeSquareDivs(DEFAULT_GRID_SIZE);
+
+/*Background*/
+const canvas = document.querySelector('#canvas1');
+const ctx = canvas.getContext('2d');
+ctx.canvas.width = window.innerWidth;
+ctx.canvas.height = window.innerHeight;
+let particles = [];
+
+let backgroundCol = '#FFFFDD';
+function darkModeToggle(e) {
+    document.body.style.background = backgroundCol;
+}
