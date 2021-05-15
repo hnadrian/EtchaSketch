@@ -12,6 +12,8 @@ const sizeSlider =  document.querySelector('#size-slider');
 sizeSlider.addEventListener('input',updateGridSizeRange); //Activiate as range slides
 sizeSlider.addEventListener('change',updateGridSizeDisplay); //Activate as range changed (mouse released)
 
+const colorPicker = document.querySelector('#color-picker');
+
 const DEFAULT_COLOR = 'white';
 const DEFAULT_GRID_SIZE = 10;
 let drawStarted = false;
@@ -50,18 +52,17 @@ function updateGridSizeText(e) {
 
 function updateGridSizeDisplay(e) {
     console.log(e.target);
-    if (containsDrawing) {
-        //GIVE WARNING
-        if (/*The user choose to stop*/false) return;
-    }
-
     if (e.keyCode == 13 || e.target.type === 'range') {
         let newSize = e.target.value;
         if (newSize > 100) {
             e.target.value = gridSize;
         } else {
+            if (containsDrawing) {
+                let cont = confirm('Changing the grid size will erase your drawing. Do you want to continue?');
+                if (!cont) return;
+            }
             clearGrid();
-            makeSquareDivs(newSize);   //??
+            makeSquareDivs(newSize);   
             gridSize = newSize;
         }
     }
