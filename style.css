@@ -1,18 +1,39 @@
 body {
     background: #A8D0E6;
 }
+
+#header {
+    display: flex;
+    height: 4rem;
+    justify-content: center;
+    align-items: center;
+    font: Arial, san-serif;
+    color: #ff8686;
+    text-shadow: 1.3px 1px 2px rgb(219, 26, 26);
+    font-size: 50px;
+}
+
 #container {
     display: inline-grid;
     width: 70vh;
     height: 70vh;
     font-size: 2px;
-    position: absolute;
-	top:0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-    margin: auto;
+    position: relative;
+	left: 50%;
+    transform: translateX(-50%);
 }
+
+#controls {
+    position: relative; 
+    left: 50%;
+    transform: translateX(-50%);
+    border: 3px solid #ff8686;
+    width: 480px;
+    padding: 7px;
+    text-align: center;
+}
+
+
 
 label {
     color: #ff8686;
@@ -73,7 +94,7 @@ input[type="radio"]:checked {
 #size-text {
     width: 28px;
     text-align: center;
-    color: #F76C6C;
+    color: #fa5f5f;
 }
 
 #size-text:focus {

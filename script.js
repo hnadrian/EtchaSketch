@@ -12,7 +12,7 @@ sizeSlider.addEventListener('input',updateGridSizeRange); //Activiate as range s
 sizeSlider.addEventListener('change',updateGridSizeDisplay); //Activate as range changed (mouse released)
 
 const penButton = document.querySelector('#pen');
-const rainbowButton = document.querySelector('#rainbow');
+const colorfulButton = document.querySelector('#colorful');
 penButton.checked = true;
 
 const colorPicker = document.querySelector('#color-picker');
@@ -46,7 +46,6 @@ function makeSquareDivs(size) {
 function updateGridSizeRange(e) {
     let newSize = e.target.value;
     sizeText.value = newSize;
-    gridSize = newSize;
 }
 
 function updateGridSizeText(e) {
@@ -68,7 +67,11 @@ function updateGridSizeDisplay(e) {
         } else {
             if (containsDrawing) {
                 let cont = confirm('Changing the grid size will erase your drawing. Do you want to continue?');
-                if (!cont) return;
+                if (!cont) {
+                    sizeText.value = gridSize;
+                    sizeSlider.value = gridSize;
+                    return;
+                }
             }
             clearGrid();
             makeSquareDivs(newSize);   
@@ -95,7 +98,7 @@ function toggleDrawMode(e) {
 }
 
 function draw(e) {
-    if (rainbowButton.checked == true) {
+    if (colorfulButton.checked == true) {
         let randomColor = "#000000".replace(/0/g,function(){return (~~(Math.random()*16)).toString(16);});
         e.target.style.backgroundColor = randomColor;
     } else {

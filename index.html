@@ -7,18 +7,20 @@
     </head>
 
     <body>
-        <div id="container"></div>
-        <div id="side-controls">
-            <button id="clear-button" class='button'>Clear Drawing</button>
-            <input type="range" min="0" max="100" step="5" id="size-slider">
+        <div class="container" id="headercontainer">
+            <h1 id="header">Etch-a-Sketch</h1>
+        </div>
+        <div id="controls">
+            <button id="clear-button" class="control-option" >Clear Drawing</button>
+            <input type="range" min="0" max="100" step="5" id="size-slider" class="control-option" >
             <input type="text" id="size-text">
 
-            <input type="radio" id="pen" name="drawing-tool" value="pen">
-            <input type="color" id="color-picker">
-            <input type="radio" id="rainbow" name="drawing-tool" value="rainbow">
-            <label for="pen">Rainbow</label><br>
+            <input type="radio" id="pen" name="drawing-tool" value="pen" class="control-option">
+            <input type="color" id="color-picker" class="control-option">
+            <input type="radio" id="colorful" name="drawing-tool" value="colorful" class="control-option">
+            <label for="pen" class="control-option">Colorful</label><br>
         </div>
-        <canvas id="canvas1"></canvas>
+        <div id="container"></div>
         <script src ="script.js"></script>  
     </body>
 </html>
