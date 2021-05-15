@@ -10,8 +10,13 @@
         <div id="container"></div>
         <div id="bottom-controls">
             <button id="clear-button">Clear Drawing</button>
-            <input type="range" value="15" min="0" max="100" step="5" id="size-slider">
-            <input type="text" value="15" id="size-text" >
+            <input type="range" min="0" max="100" step="5" id="size-slider">
+            <input type="text" id="size-text">
+
+            <input type="radio" id="pen" name="drawing-tool" value="pen">
+            <input type="color" id="color-picker">
+            <input type="radio" id="pen" name="drawing-tool" value="pencil">
+            <label for="pen">Pencil</label><br>
         </div>
         <script src ="script.js"></script>  
     </body>

@@ -2,16 +2,23 @@ const container = document.querySelector('#container');
 container.addEventListener('click', toggleDrawMode);
 
 const sizeText = document.querySelector('#size-text');
+sizeText.addEventListener('keydown', updateGridSizeDisplay);
+//sizeText.addEventListener('keydown', updateGridSizeText);
 
 const clearButton = document.querySelector('#clear-button');
 clearButton.addEventListener('click', clearDrawing);
 
 const sizeSlider =  document.querySelector('#size-slider');
-sizeSlider.addEventListener('input',updateGridSize); //Activiate as range slides
+sizeSlider.addEventListener('input',updateGridSizeRange); //Activiate as range slides
 sizeSlider.addEventListener('change',updateGridSizeDisplay); //Activate as range changed (mouse released)
 
 const DEFAULT_COLOR = 'white';
+const DEFAULT_GRID_SIZE = 10;
 let drawStarted = false;
+let containsDrawing = false;
+let gridSize = DEFAULT_GRID_SIZE;
+sizeText.value = DEFAULT_GRID_SIZE;
+sizeSlider.value = DEFAULT_GRID_SIZE;
 
 function makeSquareDivs(size) {
     for (let i = 0; i < (size * size); i++) {
@@ -24,18 +31,45 @@ function makeSquareDivs(size) {
     }
 }
 
-function updateGridSize(e) {
+function updateGridSizeRange(e) {
     let newSize = e.target.value;
     sizeText.value = newSize;
+    gridSize = newSize;
+}
+
+//FIX THIS
+function updateGridSizeText(e) {
+    let newSize = e.target.value;
+    if (newSize > 100) {
+        e.target.value = gridSize;
+    } else {
+        updateGridSizeDisplay(e);
+        gridSize = newSize;
+    }
 }
 
 function updateGridSizeDisplay(e) {
-    clearGrid();
-    makeSquareDivs(e.target.value);
+    console.log(e.target);
+    if (containsDrawing) {
+        //GIVE WARNING
+        if (/*The user choose to stop*/false) return;
+    }
+
+    if (e.keyCode == 13 || e.target.type === 'range') {
+        let newSize = e.target.value;
+        if (newSize > 100) {
+            e.target.value = gridSize;
+        } else {
+            clearGrid();
+            makeSquareDivs(newSize);   //??
+            gridSize = newSize;
+        }
+    }
 }
 
 function toggleDrawMode(e) {
     let blockList = document.querySelectorAll('.block');
+    containsDrawing = true;
     if (!drawStarted){
         blockList.forEach(block => {
             block.addEventListener('mouseenter', draw);
@@ -63,7 +97,6 @@ function clearDrawing(e) {
     let blockList = container.childNodes;
     blockList.forEach(block => {
         block.style.backgroundColor = DEFAULT_COLOR;
-        //block.addEventListener('mouseover', highlight);
     });
 }
 
@@ -73,4 +106,4 @@ function clearGrid() {
     }
 }
 
-makeSquareDivs(15);
+makeSquareDivs(DEFAULT_GRID_SIZE);
